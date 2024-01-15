@@ -15,16 +15,4 @@ export class CatalogService {
   getTeaCatalog(): Observable<TeaItemType[]> {
     return this.http.get<TeaItemType[]>('https://testologia.site/tea');
   }
-
-  // getTeaCatalog(): Observable<TeaItemType[]> {
-  //   return this.http.get<{data: TeaItemType[]}>('https://testologia.site/tea')
-  //     .pipe(
-  //       tap(result => {
-  //         console.log(result)
-  //       }),
-  //       map((result) => (result.data))
-  //     )
-  // }
-
-
 }

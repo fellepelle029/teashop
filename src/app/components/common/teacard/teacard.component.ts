@@ -6,7 +6,7 @@ import {TeaItemType} from "../../../types/teaitem.type";
   templateUrl: './teacard.component.html',
   styleUrls: ['./teacard.component.scss']
 })
-export class TeacardComponent implements OnInit {
+export class TeaCardComponent implements OnInit {
 
   @Input() teaCard: TeaItemType;
 
