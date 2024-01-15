@@ -1,7 +1,9 @@
 <div class="card">
-  <a href="{{teaCard.image}}" data-lightbox="image-1">
-    <img src="{{teaCard.image}}" class="card-img-top" data-lightbox="image-1" alt="">
-  </a>
+  <div class="card-image">
+    <a href="{{teaCard.image}}" class="card-link" data-lightbox="image-1">
+      <img src="{{teaCard.image}}" class="card-img-top" data-lightbox="image-1" alt="">
+    </a>
+  </div>
   <div class="card-body">
     <h5 class="card-title">{{teaCard.title}}</h5>
     <p class="card-text">{{teaCard.description | textReduction}}</p>
