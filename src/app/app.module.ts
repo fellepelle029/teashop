@@ -6,16 +6,18 @@ import {registerLocaleData} from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 registerLocaleData(localeRu, 'ru');
 
+import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { AccordionDirective } from './directives/accordion.directive';
 import { CatalogComponent } from './components/catalog/catalog.component';
-import {HttpClientModule} from "@angular/common/http";
 import { TeaCardComponent } from './components/common/teacard/teacard.component';
 import { TextReductionPipe } from './pipes/text-reduction.pipe';
 import { TeaDetailsComponent } from './components/teadetails/teadetails.component';
+import { FormComponent } from './components/form/form.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { TeaDetailsComponent } from './components/teadetails/teadetails.componen
     CatalogComponent,
     TeaCardComponent,
     TextReductionPipe,
-    TeaDetailsComponent
+    TeaDetailsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
