@@ -30,7 +30,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     TeaCardComponent,
     TextReductionPipe,
     TeaDetailsComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
