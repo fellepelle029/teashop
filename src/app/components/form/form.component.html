@@ -1,53 +1,91 @@
 <form id="orderForm" class="container py-5"
-    [formGroup]="orderForm">
+      [formGroup]="orderForm" *ngIf="!orderAccepted">
   <div class="text-center fw-bold fs-3 mb-5">Сделать заказ</div>
 
-    <div class="col-lg-10 mx-auto">
-      <div class="row">
-        <div class="col-sm-12 mb-2 ">
-          <p class="fw-medium">Товар</p>
-          <input type="text" name="Товар" class="form-control formInput"
-                 formControlName="product">
-        </div>
-        <div class="col-sm-4 mb-2">
-          <p class="fw-medium">Имя</p>
-          <input type="text" name="Имя" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-4 mb-2">
-          <p class="fw-medium">Фамилия</p>
-          <input type="text" name="Фамилия" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-4 mb-2">
-          <p class="fw-medium">Телефон</p>
-          <input type="text" name="Телефон" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-6 mb-2">
-          <p class="fw-medium">Страна</p>
-          <input type="text" name="Страна" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-6 mb-2">
-          <p class="fw-medium">Индекс</p>
-          <input type="text" name="Индекс" id="indexForm" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-12 mb-2 ">
-          <p class="fw-medium">Адрес</p>
-          <input type="text" name="Адрес" class="form-control formInput"
-                 >
-        </div>
-        <div class="col-sm-12 mb-5 ">
-          <p class="fw-medium">Комментарий</p>
-          <input type="text" name="Комментарий" class="form-control formInput"
-                 >
+  <div class="col-lg-10 mx-auto">
+    <div class="row">
+      <div class="col-sm-12 mb-2 ">
+        <p class="fw-medium">Товар</p>
+        <input type="text" name="Товар" class="form-control formInput"
+               formControlName="product" readonly required>
+      </div>
+      <div class="col-sm-4 mb-2">
+        <p class="fw-medium">Имя</p>
+        <input type="text" name="Имя" class="form-control formInput"
+               formControlName="name" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('name')?.invalid &&
+          (orderForm.get('name')?.touched || orderForm.get('name')?.dirty)">
+          <div class="invalid-feedback" *ngIf="orderForm.get('name')?.errors?.['required']">Введите имя</div>
+          <div class="invalid-feedback" *ngIf="orderForm.get('name')?.errors?.['pattern']">Имя должно содержать
+            только буквы
+          </div>
         </div>
       </div>
-      <a id="submitButton" type="" class="btn btn-primary col-md-4" (click)="postOrder()">Купить</a>
+      <div class="col-sm-4 mb-2">
+        <p class="fw-medium">Фамилия</p>
+        <input type="text" name="Фамилия" class="form-control formInput"
+               formControlName="last_name" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('last_name')?.invalid &&
+          (orderForm.get('last_name')?.touched || orderForm.get('last_name')?.dirty)">
+          <div class="invalid-feedback" *ngIf="orderForm.get('last_name')?.errors?.['required']">Введите фамилию</div>
+          <div class="invalid-feedback" *ngIf="orderForm.get('last_name')?.errors?.['pattern']">Фамилия должна содержать
+            только буквы
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mb-2">
+        <p class="fw-medium">Телефон</p>
+        <input type="text" name="Телефон" class="form-control formInput"
+               formControlName="phone" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('phone')?.invalid &&
+          (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty)">
+          <div class="invalid-feedback" *ngIf="orderForm.get('phone')?.errors?.['required']">Введите телефон</div>
+          <div class="invalid-feedback" *ngIf="orderForm.get('phone')?.errors?.['pattern']">Введите телефон в формате +x
+            xxx xxx xx xx
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <p class="fw-medium">Страна</p>
+        <input type="text" name="Страна" class="form-control formInput"
+               formControlName="country" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('country')?.invalid &&
+          (orderForm.get('country')?.touched || orderForm.get('country')?.dirty)">
+          <div class="invalid-feedback" *ngIf="orderForm.get('country')?.errors?.['required']">Укажите свою страну</div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <p class="fw-medium">Индекс</p>
+        <input type="text" name="Индекс" id="indexForm" class="form-control formInput"
+               formControlName="zip" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('zip')?.invalid &&
+          (orderForm.get('zip')?.touched || orderForm.get('zip')?.dirty)">
+          <div class="invalid-feedback" *ngIf="orderForm.get('zip')?.errors?.['required']">Укажите корректный индекс</div>
+        </div>
+      </div>
+      <div class="col-sm-12 mb-2 ">
+        <p class="fw-medium">Адрес</p>
+        <input type="text" name="Адрес" class="form-control formInput"
+               formControlName="address" required>
+        <div class="invalid-feedback" *ngIf="orderForm.get('address')?.invalid &&
+          (orderForm.get('address')?.touched || orderForm.get('address')?.dirty) &&
+           orderForm.get('address')?.errors?.['required']">Укажите корректный адрес
+        </div>
+      </div>
+      <div class="col-sm-12 mb-5 ">
+        <p class="fw-medium">Комментарий</p>
+        <input type="text" name="Комментарий" class="form-control formInput"
+               formControlName="comment">
+      </div>
     </div>
+    <a id="submitButton" type="button" class="btn btn-primary col-md-4" (click)="postOrder()" >
+<!--      [class.disabled]="orderForm.invalid"-->
+      Купить
+    </a>
+    <div *ngIf="orderError" class="text-danger">Произошла ошибка. Попробуйте еще раз.</div>
+
+  </div>
 
 </form>
 
-<div id="orderAccepted" class="text-center fw-bold fs-3 py-6">Спасибо за заказ!</div>
+<div *ngIf="orderAccepted" id="orderAccepted" class="text-center fw-bold fs-3 py-6">Спасибо за заказ!</div>
