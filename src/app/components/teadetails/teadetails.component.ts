@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CatalogService} from "../../services/catalog.service";
 import {TeaItemType} from "../../types/teaitem.type";
+import {ProductNameIntoFormService} from "../../services/product-name-into-form.service";
 
 @Component({
   selector: 'teadetails',
@@ -13,14 +14,14 @@ export class TeaDetailsComponent implements OnInit {
   teaDetails: TeaItemType | undefined;
 
   constructor(private route: ActivatedRoute,
-              private catalogService: CatalogService) { }
+              private catalogService: CatalogService,
+              private productNameIntoFormService: ProductNameIntoFormService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam !== null) {
         this.teaId = +idParam;
-        console.log(params);
         this.loadTeaDetails();
       }
     });
@@ -29,8 +30,10 @@ export class TeaDetailsComponent implements OnInit {
   loadTeaDetails() {
     this.catalogService.getTeaCatalog().subscribe(teaCatalog => {
       this.teaDetails = teaCatalog.find(tea => tea.id === this.teaId);
-      console.log(this.teaDetails)
+
+      if (this.teaDetails) {
+        this.productNameIntoFormService.setSelectedProduct(this.teaDetails.title);
+      }
     });
   }
-
 }
