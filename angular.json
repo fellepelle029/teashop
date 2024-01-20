@@ -29,7 +29,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/jquery-ui/dist/themes/base/jquery-ui.min.css"
             ],
             "scripts": [

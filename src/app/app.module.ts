@@ -18,6 +18,7 @@ import { TextReductionPipe } from './pipes/text-reduction.pipe';
 import { TeaDetailsComponent } from './components/teadetails/teadetails.component';
 import { FormComponent } from './components/form/form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' }
