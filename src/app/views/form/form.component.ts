@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {ProductNameIntoFormService} from "../../services/product-name-into-form.service";
 import {HttpClient} from "@angular/common/http";
+import {ProductNameIntoFormService} from "../../shared/services/product-name-into-form.service";
 
 
 @Component({
@@ -30,7 +30,6 @@ export class FormComponent implements OnInit {
               private http: HttpClient,
               private productNameIntoFormService: ProductNameIntoFormService) {
   }
-
 
   ngOnInit(): void {
     const selectedProduct = this.productNameIntoFormService.getSelectedProduct();

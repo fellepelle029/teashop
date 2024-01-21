@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable, tap} from "rxjs";
-import {TeaItemType} from "../types/teaitem.type";
+import {Observable} from "rxjs";
+import {TeaItemType} from "../../types/teaitem.type";
 
 @Injectable({
   providedIn: 'root'

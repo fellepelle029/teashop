@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CatalogService} from "../../services/catalog.service";
-import {HttpClient} from "@angular/common/http";
-import {TeaItemType} from "../../types/teaitem.type";
+import {Component, OnInit} from '@angular/core';
+import {TeaItemType} from "../../../types/teaitem.type";
+import {CatalogService} from "../../../shared/services/catalog.service";
 
 @Component({
   selector: 'catalog',

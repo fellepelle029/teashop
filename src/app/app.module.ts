@@ -9,35 +9,26 @@ registerLocaleData(localeRu, 'ru');
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './components/main/main.component';
-import { AccordionDirective } from './directives/accordion.directive';
-import { CatalogComponent } from './components/catalog/catalog.component';
-import { TeaCardComponent } from './components/common/teacard/teacard.component';
-import { TextReductionPipe } from './pipes/text-reduction.pipe';
-import { TeaDetailsComponent } from './components/teadetails/teadetails.component';
-import { FormComponent } from './components/form/form.component';
-import {ReactiveFormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {SharedModule} from "./shared/shared.module";
+import {TeaCatalogModule} from "./views/tea-catalog/tea-catalog.module";
+import {FormModule} from "./views/form/form.module";
+import {MainModule} from "./views/main/main.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    MainComponent,
-    AccordionDirective,
-    CatalogComponent,
-    TeaCardComponent,
-    TextReductionPipe,
-    TeaDetailsComponent,
-    FormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    MainModule,
+    FormModule,
+    TeaCatalogModule,
+    SharedModule,
     NgbModule
   ],
   providers: [

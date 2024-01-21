@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {CatalogService} from "../../services/catalog.service";
-import {TeaItemType} from "../../types/teaitem.type";
-import {ProductNameIntoFormService} from "../../services/product-name-into-form.service";
+import {TeaItemType} from "../../../types/teaitem.type";
+import {CatalogService} from "../../../shared/services/catalog.service";
+import {ProductNameIntoFormService} from "../../../shared/services/product-name-into-form.service";
 
 @Component({
   selector: 'teadetails',
