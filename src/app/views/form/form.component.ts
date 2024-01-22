@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {ProductNameIntoFormService} from "../../shared/services/product-name-into-form.service";
+import {OrderDataType} from "../../types/order-data.type";
 
 
 @Component({
@@ -28,7 +29,8 @@ export class FormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private http: HttpClient,
-              private productNameIntoFormService: ProductNameIntoFormService) {
+              private productNameIntoFormService: ProductNameIntoFormService,
+              private orderService: ProductNameIntoFormService) {
   }
 
   ngOnInit(): void {
@@ -37,19 +39,19 @@ export class FormComponent implements OnInit {
   }
 
   postOrder() {
-    this.http.post<any>('https://testologia.site/order-tea', this.orderForm.value)
-      .subscribe(
-        response => {
+    this.orderService.postOrder(this.orderForm.value as OrderDataType)
+      .subscribe({
+        next: (response) => {
           if (response.success === 1) {
             this.orderAccepted = true;
           } else {
             this.orderError = true;
           }
         },
-        error => {
+        error: (error) => {
           this.orderError = true;
-          console.error('Error submitting order:', error);
+          console.error(error);
         }
-      );
+      });
   }
 }
