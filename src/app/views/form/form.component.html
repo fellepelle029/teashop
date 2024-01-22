@@ -1,5 +1,7 @@
 <form id="orderForm" class="container py-5"
-      [formGroup]="orderForm" *ngIf="!orderAccepted">
+      [formGroup]="orderForm"
+      *ngIf="!orderAccepted"
+      (ngSubmit)="postOrder()">
   <div class="text-center fw-bold fs-3 mb-5">Сделать заказ</div>
 
   <div class="col-lg-10 mx-auto">
@@ -78,10 +80,9 @@
                formControlName="comment">
       </div>
     </div>
-    <a id="submitButton" type="button" class="btn btn-primary col-md-4" (click)="postOrder()" >
-<!--      [class.disabled]="orderForm.invalid"-->
+    <button id="submitButton" class="btn btn-primary col-md-4" [disabled]="orderForm.invalid || orderForm.disabled" >
       Купить
-    </a>
+    </button>
     <div *ngIf="orderError" class="text-danger">Произошла ошибка. Попробуйте еще раз.</div>
 
   </div>
